@@ -1,7 +1,7 @@
-# TwoLevelRefreshLayout
+# RefreshLayout
 
 #### 介绍
-基于SmartRefreshLayout实现的仿猫眼首页下拉刷新，继续下拉进入二楼组件
+基于SmartRefreshLayout实现的仿猫眼下拉刷新和首页下拉刷新，继续下拉进入二楼组件
 
 #### 软件架构
 软件架构说明
