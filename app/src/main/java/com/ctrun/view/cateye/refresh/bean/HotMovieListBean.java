@@ -1,7 +1,7 @@
 package com.ctrun.view.cateye.refresh.bean;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
-import com.ctrun.view.cateye.util.MovieVersionHelper;
+import com.ctrun.view.cateye.refresh.util.MovieVersionHelper;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.ctrun.view.cateye.refresh.ui;
+package com.ctrun.view.cateye.refresh.ui.home;
 
 import android.animation.ArgbEvaluator;
 import android.annotation.SuppressLint;
@@ -18,13 +18,14 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.Holder;
-import com.ctrun.view.R;
-import com.ctrun.view.cateye.observe.CommonObservable;
-import com.ctrun.view.cateye.observe.Observer;
-import com.ctrun.view.cateye.util.ViewUtils;
-import com.ctrun.view.cateye.widget.IndicatorView;
-import com.ctrun.view.common.imageload.ImageLoaderManager;
-import com.ctrun.view.common.util.UIUtils;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.ctrun.view.cateye.refresh.R;
+import com.ctrun.view.cateye.refresh.listener.CommonObservable;
+import com.ctrun.view.cateye.refresh.listener.Observer;
+import com.ctrun.view.cateye.refresh.util.UIUtils;
+import com.ctrun.view.cateye.refresh.util.ViewUtils;
+import com.ctrun.view.cateye.refresh.widget.IndicatorView;
 
 import java.util.ArrayList;
 
@@ -33,13 +34,13 @@ import java.util.ArrayList;
  */
 @SuppressWarnings("FieldCanBeLocal")
 public class HeadBannerArea {
-    private AppCompatActivity mContext;
-    private LayoutInflater mInflater;
+    private final AppCompatActivity mContext;
+    private final LayoutInflater mInflater;
 
-    private View mHeadBanner;
-    private ConvenientBanner<BannerDataBean> mBanner;
-    private View mBannerBackground;
-    private IndicatorView mIndicatorView;
+    private final View mHeadBanner;
+    private final ConvenientBanner<BannerDataBean> mBanner;
+    private final View mBannerBackground;
+    private final IndicatorView mIndicatorView;
 
     private final ArrayList<BannerDataBean> mBannerData = new ArrayList<>();
     private boolean mEnableColorChange = true;
@@ -48,7 +49,7 @@ public class HeadBannerArea {
         mContext = context;
         mInflater = LayoutInflater.from(context);
 
-        mHeadBanner = mInflater.inflate(R.layout.cateye_home_head_banner, null);
+        mHeadBanner = mInflater.inflate(R.layout.home_head_banner, null);
         mHeadBanner.setVisibility(View.GONE);
         mBannerBackground = mHeadBanner.findViewById(R.id.v_background);
         mBanner = mHeadBanner.findViewById(R.id.banner);
@@ -238,7 +239,6 @@ public class HeadBannerArea {
     };
 
 
-    private static final int TAG_BANNER = R.id.tag_banner;
     private class BannerImageHolder implements Holder<BannerDataBean> {
         private ImageView imageView;
 
@@ -254,12 +254,12 @@ public class HeadBannerArea {
 
         @Override
         public void UpdateUI(Context context, int position, BannerDataBean data) {
-            imageView.setTag(TAG_BANNER, data);
-            ImageLoaderManager.getInstance().loadAdvertImage(
-                    mContext,
-                    ContextCompat.getDrawable(mContext, R.drawable.common_bg_default_image),
-                    imageView,
-                    data.imageUrl);
+            Glide.with(context)
+                    .load(data.imageUrl)
+                    .apply(new RequestOptions()
+                            .placeholder(R.drawable.common_bg_default_image)
+                            .dontAnimate())
+                    .into(imageView);
         }
     }
 

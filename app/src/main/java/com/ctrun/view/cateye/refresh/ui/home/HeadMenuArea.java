@@ -1,4 +1,4 @@
-package com.ctrun.view.cateye.refresh.ui;
+package com.ctrun.view.cateye.refresh.ui.home;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -80,8 +80,8 @@ public class HeadMenuArea {
         }
     }
 
-    private ArrayList<MenuData> menu1Data = new ArrayList<>();
-    private ArrayList<MenuData> menu2Data = new ArrayList<>();
+    private final ArrayList<MenuData> menu1Data = new ArrayList<>();
+    private final ArrayList<MenuData> menu2Data = new ArrayList<>();
     {
         menu1Data.add(new MenuData("http://p0.meituan.net/movie/9bfe621218b6e46acf6c3aeb0eae617622486.png.webp@150w_150h_1e_1l_1c", "电影影院", TYPE_MOVIE_CINEMA));
         menu1Data.add(new MenuData("http://p0.meituan.net/movie/c4a2b705d7b2ff4573884d722cd068d522094.png.webp@150w_150h_1e_1l_1c", "放映厅", TYPE_H5, "https://i.maoyan.com/asgard/longvideo/index"));

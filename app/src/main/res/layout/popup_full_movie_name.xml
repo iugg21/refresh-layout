@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="8dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="3dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="21dp"
+        android:background="@drawable/movie_ic_angle_up_black"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/movie_popup_bg_movie_name"
+        android:orientation="vertical"
+        android:layout_marginRight="12dp"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tv_movie_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            tools:text="小黄人大眼萌：神偷奶爸前传"
+            android:textColor="@color/common_font_white" />
+
+        <TextView
+            android:id="@+id/tv_english_movie_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:lines="1"
+            android:ellipsize="end"
+            android:textSize="13dp"
+            tools:text="Minions：The Rise of Gru"
+            android:textColor="@color/common_font_gray_deep3" />
+
+    </LinearLayout>
+
+</LinearLayout>

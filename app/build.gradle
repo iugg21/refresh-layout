@@ -6,7 +6,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.ctrun.view.cateye.indicatorview"
+        applicationId "com.ctrun.view.cateye.refresh"
         minSdk 21
         targetSdk 32
         versionCode 1
@@ -34,7 +34,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
 
     implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50"
-
+    implementation 'com.bigkoo:convenientbanner:2.0.5'
     //下拉刷新库
     implementation 'io.github.scwang90:refresh-layout-kernel:2.0.5'
 

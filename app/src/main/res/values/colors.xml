@@ -5,7 +5,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="common_background">#FFFFFFFF</color>
+    <color name="common_background">#f2f4f7</color>
+    <drawable name="common_bg_default_image">#ffe5e5e5</drawable>
 
     <color name="common_font_white">#ffffffff</color>
     <color name="common_font_white_e5">#ffe5e5e5</color>
@@ -15,10 +16,14 @@
 
     <color name="common_font_gray">#999999</color>
     <color name="common_font_gray_deep">#666666</color>
+    <color name="common_font_gray_light">#c8c8c8</color>
+    <color name="common_font_gray_deep2">#6a6767</color>
+    <color name="common_font_gray_deep3">#747474</color>
 
 
     <color name="common_font_yellow">#ffb400</color>
 
     <color name="common_divider">#ffd7d6da</color>
+    <color name="common_divider_2">#ffc5c5c5</color>
 
 </resources>

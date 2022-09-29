@@ -108,30 +108,30 @@ public class MovieVersionHelper {
         HashMap<String, Integer> drawableIdMap = new HashMap<>(16);
         for (String type : verArray) {
             if ("IMAX 3D".equals(type)) {
-                drawableIdMap.put("imax_3d", R.drawable.cateye_movie_ic_imax_3d);
+                drawableIdMap.put("imax_3d", R.drawable.movie_ic_imax_3d);
             } else if ("杜比影院 3D".equals(type)) {
-                drawableIdMap.put("dolby_cinema_3d", R.drawable.cateye_movie_ic_dolby_cinema_3d);
+                drawableIdMap.put("dolby_cinema_3d", R.drawable.movie_ic_dolby_cinema_3d);
             } else if ("中国巨幕3D".equals(type)) {
-                drawableIdMap.put("cfgs_3d", R.drawable.cateye_movie_ic_cfgs_3d);
+                drawableIdMap.put("cfgs_3d", R.drawable.movie_ic_cfgs_3d);
             } else if ("CINITY 3D".equals(type)) {
-                drawableIdMap.put("cinity_3d", R.drawable.cateye_movie_ic_cinity_3d);
+                drawableIdMap.put("cinity_3d", R.drawable.movie_ic_cinity_3d);
             } else if ("3D".equals(type)) {
-                drawableIdMap.put("3d", R.drawable.cateye_movie_ic_3d_gray);
+                drawableIdMap.put("3d", R.drawable.movie_ic_3d_gray);
             } else if ("IMAX 2D".equals(type)) {
                 if (!drawableIdMap.containsKey("imax_3d")) {
-                    drawableIdMap.put("imax_2d", R.drawable.cateye_movie_ic_imax_2d);
+                    drawableIdMap.put("imax_2d", R.drawable.movie_ic_imax_2d);
                 }
             } else if ("杜比影院 2D".equals(type)) {
                 if (!drawableIdMap.containsKey("dolby_cinema_3d")) {
-                    drawableIdMap.put("dolby_cinema_2d", R.drawable.cateye_movie_ic_dolby_cinema_2d);
+                    drawableIdMap.put("dolby_cinema_2d", R.drawable.movie_ic_dolby_cinema_2d);
                 }
             } else if ("中国巨幕2D".equals(type)) {
                 if (!drawableIdMap.containsKey("cfgs_3d")) {
-                    drawableIdMap.put("cfgs_2d", R.drawable.cateye_movie_ic_cfgs_2d);
+                    drawableIdMap.put("cfgs_2d", R.drawable.movie_ic_cfgs_2d);
                 }
             } else if ("CINITY 2D".equals(type)) {
                 if (!drawableIdMap.containsKey("cinity_3d")) {
-                    drawableIdMap.put("cinity_2d", R.drawable.cateye_movie_ic_cinity_2d);
+                    drawableIdMap.put("cinity_2d", R.drawable.movie_ic_cinity_2d);
                 }
             }
         }
@@ -193,11 +193,11 @@ public class MovieVersionHelper {
             Integer[] newDrawableIds;
             if (drawableIds != null) {
                 newDrawableIds = Arrays.copyOf(drawableIds, drawableIds.length + 1);
-                newDrawableIds[newDrawableIds.length - 1] = R.drawable.cateye_movie_ic_preview;
+                newDrawableIds[newDrawableIds.length - 1] = R.drawable.movie_ic_preview;
 
             } else {
                 newDrawableIds = new Integer[1];
-                newDrawableIds[0] = R.drawable.cateye_movie_ic_preview;
+                newDrawableIds[0] = R.drawable.movie_ic_preview;
             }
 
             return newDrawableIds;
@@ -207,11 +207,11 @@ public class MovieVersionHelper {
             Integer[] newDrawableIds;
             if (drawableIds != null) {
                 newDrawableIds = Arrays.copyOf(drawableIds, drawableIds.length + 1);
-                newDrawableIds[newDrawableIds.length - 1] = R.drawable.cateye_movie_ic_revival;
+                newDrawableIds[newDrawableIds.length - 1] = R.drawable.movie_ic_revival;
 
             } else {
                 newDrawableIds = new Integer[1];
-                newDrawableIds[0] = R.drawable.cateye_movie_ic_revival;
+                newDrawableIds[0] = R.drawable.movie_ic_revival;
             }
 
             return newDrawableIds;

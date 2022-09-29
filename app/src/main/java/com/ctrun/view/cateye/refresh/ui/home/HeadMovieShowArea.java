@@ -1,4 +1,4 @@
-package com.ctrun.view.cateye.refresh.ui;
+package com.ctrun.view.cateye.refresh.ui.home;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.ctrun.view.cateye.refresh.R;
 import com.ctrun.view.cateye.refresh.bean.MovieShowBean;
-import com.ctrun.view.cateye.refresh.ui.adapter.MovieShowAdapter;
+import com.ctrun.view.cateye.refresh.ui.home.adapter.MovieShowAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

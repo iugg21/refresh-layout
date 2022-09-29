@@ -2,10 +2,13 @@ package com.ctrun.view.cateye.refresh.util;
 
 import android.app.Activity;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Build;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import androidx.annotation.NonNull;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -15,6 +18,28 @@ import java.lang.reflect.Method;
  */
 
 public class StatusBarUtils {
+
+    public static void setFullScreen(@NonNull Activity activity, boolean light) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window window = activity.getWindow();
+            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                // 5.0及以上状态栏设为半透明
+                window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    //添加Flag把状态栏设为可绘制模式
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+                    // 6.0及以上状态栏设为全透明
+                    window.setStatusBarColor(Color.TRANSPARENT);
+                }
+                window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            }
+
+            setStatusBarMode(activity, light);
+        }
+
+    }
 
     /**
      * 状态栏亮色模式，设置状态栏黑色文字、图标，

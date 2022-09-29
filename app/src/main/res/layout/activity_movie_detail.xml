@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/sv_movie_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_movie_info_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/rl_movie_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/actionbar_height"
+                    android:layout_marginBottom="10dp"
+                    tools:background="#FF662D29">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        tools:layout_marginTop="53dp">
+
+                        <FrameLayout
+                            android:id="@+id/fl_movie_img"
+                            android:layout_width="106dp"
+                            android:layout_height="152dp">
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/iv_movie_img"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/movie_detail_image_round_bg"
+                                android:scaleType="centerCrop"
+                                app:riv_corner_radius="6dp" />
+
+                            <ImageView
+                                android:id="@+id/iv_movie_play_icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start|bottom"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginBottom="6dp"
+                                android:src="@drawable/ic_video_play_black_translucent_2" />
+
+                        </FrameLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="152dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_toEndOf="@+id/fl_movie_img"
+                            android:orientation="vertical">
+
+                            <com.ctrun.view.cateye.refresh.widget.MovieTitleLayout
+                                android:id="@+id/ll_movie_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tv_movie_name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:ellipsize="end"
+                                    android:lines="1"
+                                    android:textColor="@color/common_font_white"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    tools:text="电影名" />
+
+                                <View
+                                    android:id="@+id/show_full_movie_name"
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="4dp"
+                                    android:background="@drawable/movie_ic_more" />
+
+                            </com.ctrun.view.cateye.refresh.widget.MovieTitleLayout>
+
+                            <TextView
+                                android:id="@+id/tv_english_movie_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/ll_movie_name"
+                                android:layout_marginTop="7dp"
+                                android:ellipsize="end"
+                                android:lines="1"
+                                android:textColor="@color/common_font_gray_light"
+                                android:textSize="12dp"
+                                tools:text="english name" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_above="@+id/ll_like_seen"
+                                android:layout_below="@+id/tv_english_movie_name"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:id="@+id/ll_movie_praise"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="top"
+                                        android:layout_marginTop="4dp"
+                                        android:src="@drawable/movie_ic_double_quote_left" />
+
+                                    <TextView
+                                        android:id="@+id/tv_movie_praise"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_marginEnd="2dp"
+                                        android:layout_weight="1"
+                                        android:lines="1"
+                                        android:singleLine="true"
+                                        android:textColor="#FFA6977C"
+                                        android:textSize="12dp"
+                                        tools:text="一段阴差阳错的寻汉爆笑之旅" />
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="top"
+                                        android:layout_marginTop="4dp"
+                                        android:src="@drawable/movie_ic_double_quote_right" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/tv_movie_type"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:textColor="@color/common_font_gray_light"
+                                        android:textSize="12dp"
+                                        tools:text="电影类型" />
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="4dp" />
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/tv_pub_desc_dur"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="1dp"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:textColor="@color/common_font_gray_light"
+                                    android:textSize="12dp"
+                                    tools:text="2019-06-14大陆上映/115分钟" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ll_like_seen"
+                                android:layout_width="match_parent"
+                                android:layout_height="29dp"
+                                android:layout_alignParentBottom="true"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/movie_bg_btn_like"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="14dp"
+                                        android:layout_height="14dp"
+                                        android:src="@drawable/movie_ic_like_fill_white" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="5dp"
+                                        android:gravity="center"
+                                        android:text="想看"
+                                        android:textColor="@color/common_font_white"
+                                        android:textSize="12dp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="29dp"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/movie_bg_btn_like"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="14dp"
+                                        android:layout_height="14dp"
+                                        android:src="@drawable/movie_ic_star_fill_white" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="5dp"
+                                        android:gravity="center"
+                                        android:text="看过"
+                                        android:textColor="@color/common_font_white"
+                                        android:textSize="12dp" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <include layout="@layout/actionbar_movie_detail" android:id="@+id/actionbar" />
+
+</FrameLayout>

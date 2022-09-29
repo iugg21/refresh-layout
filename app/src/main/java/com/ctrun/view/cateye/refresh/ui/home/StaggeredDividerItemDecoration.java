@@ -1,4 +1,4 @@
-package com.ctrun.view.cateye.refresh.ui;
+package com.ctrun.view.cateye.refresh.ui.home;
 
 import android.content.Context;
 import android.graphics.Rect;

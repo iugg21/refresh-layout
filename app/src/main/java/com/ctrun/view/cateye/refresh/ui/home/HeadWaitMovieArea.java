@@ -1,4 +1,4 @@
-package com.ctrun.view.cateye.refresh.ui;
+package com.ctrun.view.cateye.refresh.ui.home;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -15,8 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ctrun.view.cateye.refresh.R;
 import com.ctrun.view.cateye.refresh.bean.ExpectMovieBean;
 import com.ctrun.view.cateye.refresh.bean.WaitMovieBean;
-import com.ctrun.view.cateye.refresh.ui.adapter.WaitComingAdapter;
-import com.ctrun.view.cateye.refresh.ui.adapter.WaitRecommendAdapter;
+import com.ctrun.view.cateye.refresh.ui.home.adapter.WaitComingAdapter;
+import com.ctrun.view.cateye.refresh.ui.home.adapter.WaitRecommendAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

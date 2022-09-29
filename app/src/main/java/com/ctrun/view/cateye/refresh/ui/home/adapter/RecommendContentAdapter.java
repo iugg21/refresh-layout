@@ -1,4 +1,4 @@
-package com.ctrun.view.cateye.refresh.ui.adapter;
+package com.ctrun.view.cateye.refresh.ui.home.adapter;
 
 import android.view.ViewGroup;
 import android.widget.ImageView;

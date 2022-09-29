@@ -1,20 +1,22 @@
-package com.ctrun.view.cateye.refresh.ui;
+package com.ctrun.view.cateye.refresh.ui.home;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.bumptech.glide.Glide;
@@ -32,11 +34,11 @@ import com.ctrun.view.cateye.refresh.bean.VideoListBean;
 import com.ctrun.view.cateye.refresh.databinding.ActivityRefreshHomeBinding;
 import com.ctrun.view.cateye.refresh.listener.CommonObservable;
 import com.ctrun.view.cateye.refresh.listener.Observer;
-import com.ctrun.view.cateye.refresh.ui.adapter.RecommendContentAdapter;
+import com.ctrun.view.cateye.refresh.ui.MovieDetailActivity;
+import com.ctrun.view.cateye.refresh.ui.home.adapter.RecommendContentAdapter;
 import com.ctrun.view.cateye.refresh.util.JsonFileUtils;
 import com.ctrun.view.cateye.refresh.util.MovieVersionHelper;
 import com.ctrun.view.cateye.refresh.util.StatusBarUtils;
-import com.ctrun.view.cateye.refresh.util.UIUtils;
 import com.ctrun.view.cateye.refresh.widget.HomeRefreshHeader;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -69,19 +71,16 @@ public class HomeRefreshActivity extends AppCompatActivity implements OnRefreshL
 
     private RecommendContentAdapter mAdapter;
     private HeadArea mHeadArea;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        StatusBarUtils.setFullScreen(this, true);
+
         mBinding = ActivityRefreshHomeBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
         registerObservers(true);
 
-        final int statusBarHeight = UIUtils.getStatusBarHeight(this);
-        mBinding.toolbarActionbar.getRoot().getLayoutParams().height = statusBarHeight + UIUtils.dp2px(this, 50);
-        mBinding.toolbarActionbar.getRoot().setPadding(mBinding.toolbarActionbar.getRoot().getLeft(), statusBarHeight, mBinding.toolbarActionbar.getRoot().getRight(), mBinding.toolbarActionbar.getRoot().getBottom());
         initSearchHot();
-
         initRefreshLayout();
 
         final StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
@@ -95,7 +94,7 @@ public class HomeRefreshActivity extends AppCompatActivity implements OnRefreshL
         mHeadArea = new HeadArea(this);
         mHeadArea.attachToRecyclerView(mBinding.rvList);
 
-        loadData();
+        requestLocalData();
 
         Glide.with(this).load("http://p1.meituan.net/movie/fdb20c8dc0c4061defd6a5a5cc16ea703124.png.webp@66w_80h_1e_1l_1c").into(mBinding.toolbarActionbar.ivLicense);
 
@@ -103,7 +102,7 @@ public class HomeRefreshActivity extends AppCompatActivity implements OnRefreshL
                 .load("https://p0.meituan.net/movie/a26b335e46bfccf982bdd672a8df8992169307.jpg")
                         .listener(new RequestListener<Drawable>() {
                             @Override
-                            public boolean onLoadFailed(@android.support.annotation.Nullable @Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
                                 return true;
                             }
 
@@ -113,43 +112,6 @@ public class HomeRefreshActivity extends AppCompatActivity implements OnRefreshL
                                 return true;
                             }
                         }).submit();
-    }
-
-    private void loadData() {
-        Observable<HomeHeadData> observable =
-                Observable.defer((Callable<ObservableSource<HomeHeadData>>) () -> {
-                    String jsonDataHotMovie = JsonFileUtils.readJsonFromAsset(this, "cateye_movie_hot.json");
-                    HotMovieListBean bean = new Gson().fromJson(jsonDataHotMovie, HotMovieListBean.class);
-                    for (HotMovieListBean.DataBean.HotBean hotBean : bean.data.hot) {
-                        hotBean.cinemaTypeIds = MovieVersionHelper.makeMovieVerDrawableIds(hotBean.ver, hotBean.preShow, hotBean.isRevival);
-                    }
-
-                    String jsonDataMovieWait = JsonFileUtils.readJsonFromAsset(this, "cateye_movie_wait.json");
-                    ExpectMovieBean expectMovieBean = new Gson().fromJson(jsonDataMovieWait, ExpectMovieBean.class);
-
-                    String jsonDataMovieShow = JsonFileUtils.readJsonFromAsset(this, "cateye_movie_show.json");
-                    //noinspection UnstableApiUsage
-                    BaseResponse<List<MovieShowBean>> movieShowResponse = new Gson().fromJson(jsonDataMovieShow, new TypeToken<BaseResponse<List<MovieShowBean>>>(){}.getType());
-
-
-                    String jsonDataRecommend = JsonFileUtils.readJsonFromAsset(this, "cateye_recommend_content.json");
-                    VideoListBean recommendBean = new Gson().fromJson(jsonDataRecommend, VideoListBean.class);
-
-                    HomeHeadData data = new HomeHeadData();
-                    data.hotMovieListBean = bean;
-                    data.expectMovieBean = expectMovieBean;
-                    data.movieShowListBean = movieShowResponse.data;
-                    data.videoListBean = recommendBean;
-                    return Observable.just(data);
-                });
-
-        observable
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(headData -> {
-                    mHeadArea.displayHeadData(headData.hotMovieListBean.data, null, headData.expectMovieBean.data, headData.movieShowListBean);
-                    mAdapter.setNewData(headData.videoListBean.data.feeds);
-                });
     }
 
     @Override
@@ -162,7 +124,7 @@ public class HomeRefreshActivity extends AppCompatActivity implements OnRefreshL
     void initRefreshLayout() {
         HomeRefreshHeader refreshHeader = new HomeRefreshHeader(this);
         refreshHeader.setOnTwoLevelListener(refreshLayout -> {
-            //CatEyeMovieDetailActivity.start(HomeRefreshActivity.this);
+            MovieDetailActivity.start(HomeRefreshActivity.this);
             overridePendingTransition(0, 0);
             return false;
         });
@@ -187,6 +149,7 @@ public class HomeRefreshActivity extends AppCompatActivity implements OnRefreshL
         mBinding.refreshLayout.setEnableOverScrollDrag(false);
         mBinding.refreshLayout.setEnableLoadMore(false);
         mBinding.refreshLayout.setEnableNestedScroll(false);
+        mBinding.refreshLayout.setEnableRefresh(false);
     }
 
     @Override
@@ -269,6 +232,7 @@ public class HomeRefreshActivity extends AppCompatActivity implements OnRefreshL
      * 亮色 or 暗色模式变化观察者
      */
     private final Observer<Boolean> mLightModeChangedObserver = new Observer<Boolean>() {
+
         @Override
         public void onEvent(Boolean lightMode) {
             if (isFinishing()) {
@@ -281,7 +245,7 @@ public class HomeRefreshActivity extends AppCompatActivity implements OnRefreshL
                 Drawable arrowDownRightDrawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_arrow_down_small_solid);
                 mBinding.toolbarActionbar.tvCity.setCompoundDrawablesWithIntrinsicBounds(null, null, arrowDownRightDrawable, null);
 
-                mBinding.toolbarActionbar.getRoot().setElevation(getResources().getDimensionPixelOffset(R.dimen.common_dp_5));
+                mBinding.toolbarActionbar.getRoot().setElevation(getResources().getDimensionPixelOffset(R.dimen.home_actionbar_elevation_size));
             } else {
                 StatusBarUtils.setStatusBarMode(HomeRefreshActivity.this, false);
                 mBinding.toolbarActionbar.tvCity.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.common_font_white));
@@ -294,4 +258,44 @@ public class HomeRefreshActivity extends AppCompatActivity implements OnRefreshL
             }
         }
     };
+
+
+    private void requestLocalData() {
+        mBinding.loadingView.setVisibility(View.VISIBLE);
+        Observable<HomeHeadData> observable =
+                Observable.defer((Callable<ObservableSource<HomeHeadData>>) () -> {
+                    String jsonDataHotMovie = JsonFileUtils.readJsonFromAsset(this, "cateye_movie_hot.json");
+                    HotMovieListBean bean = new Gson().fromJson(jsonDataHotMovie, HotMovieListBean.class);
+                    for (HotMovieListBean.DataBean.HotBean hotBean : bean.data.hot) {
+                        hotBean.cinemaTypeIds = MovieVersionHelper.makeMovieVerDrawableIds(hotBean.ver, hotBean.preShow, hotBean.isRevival);
+                    }
+
+                    String jsonDataMovieWait = JsonFileUtils.readJsonFromAsset(this, "cateye_movie_wait.json");
+                    ExpectMovieBean expectMovieBean = new Gson().fromJson(jsonDataMovieWait, ExpectMovieBean.class);
+
+                    String jsonDataMovieShow = JsonFileUtils.readJsonFromAsset(this, "cateye_movie_show.json");
+                    BaseResponse<List<MovieShowBean>> movieShowResponse = new Gson().fromJson(jsonDataMovieShow, new TypeToken<BaseResponse<List<MovieShowBean>>>(){}.getType());
+
+                    String jsonDataRecommend = JsonFileUtils.readJsonFromAsset(this, "cateye_recommend_content.json");
+                    VideoListBean recommendBean = new Gson().fromJson(jsonDataRecommend, VideoListBean.class);
+
+                    HomeHeadData data = new HomeHeadData();
+                    data.hotMovieListBean = bean;
+                    data.expectMovieBean = expectMovieBean;
+                    data.movieShowListBean = movieShowResponse.data;
+                    data.videoListBean = recommendBean;
+                    return Observable.just(data);
+                });
+
+        //noinspection CheckResult
+        observable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(headData -> {
+                    mBinding.refreshLayout.setEnableRefresh(true);
+                    mBinding.loadingView.setVisibility(View.GONE);
+                    mHeadArea.displayHeadData(headData.hotMovieListBean.data, null, headData.expectMovieBean.data, headData.movieShowListBean);
+                    mAdapter.setNewData(headData.videoListBean.data.feeds);
+                });
+    }
 }

@@ -59,6 +59,11 @@
                     android:layout_height="match_parent"
                     android:overScrollMode="never"/>
 
+                <com.ctrun.view.cateye.refresh.widget.LoadingView
+                    android:id="@+id/loading_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
             </FrameLayout>
 
         </com.scwang.smart.refresh.layout.SmartRefreshLayout>

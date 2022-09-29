@@ -1,0 +1,112 @@
+{
+  "data": {
+    "movie": {
+      "availableEpisodes": 0,
+      "awardUrl": "",
+      "backgroundColor": "#202d4f",
+      "bingeWatch": 0,
+      "bingeWatchst": 0,
+      "cat": "喜剧,动画,冒险",
+      "comScorePersona": false,
+      "commented": false,
+      "dir": "何澄,刘可欣",
+      "distributions": [
+        {
+          "movieScoreLevel": "9-10分",
+          "proportion": "--"
+        },
+        {
+          "movieScoreLevel": "5-8分",
+          "proportion": "--"
+        },
+        {
+          "movieScoreLevel": "1-4分",
+          "proportion": "--"
+        }
+      ],
+      "dra": "国庆首选中国航空航天动画大电影！大头儿子与你一起向欢乐宇宙进发！ 拥有航天梦想的大头儿子，通过一次偶然的机会与一位特别的“外星朋友”相识。大头儿子与棉花糖妹妹组队参与小小航天员计划，共同挑战四个关卡的航天任务，他们能否在比赛中获胜？“外星朋友”在关键时刻究竟是如何让落后的大头儿子队伍重拾信心？担任领航员的小头爸爸又将如何鼓励大头儿子与朋友们共同完成艰巨任务？而始终未被公开的“外星朋友”，到底来自何方？",
+      "dur": 81,
+      "egg": false,
+      "enm": "New Happy Dad and Son 5: My Alien Friend",
+      "episodeDur": 81,
+      "episodes": 0,
+      "globalReleased": false,
+      "guideToWish": true,
+      "id": 1475162,
+      "img": "https://p0.pipi.cn/mmdb/25bfd6dde7a3382ff7c7edc4dd27ce738d432.jpg?imageMogr2/thumbnail/2500x2500%3E",
+      "latestEpisode": 0,
+      "modcsSt": false,
+      "movieType": 0,
+      "multiPub": false,
+      "musicNum": 0,
+      "nm": "新大头儿子和小头爸爸5：我的外星朋友",
+      "onSale": true,
+      "onlinePlay": false,
+      "orderSt": 0,
+      "oriLang": "国语",
+      "photos": [
+        "https://p0.pipi.cn/friday/54bf76e4913efc9b036552db489e5d3e.jpg?imageMogr2/thumbnail/2500x2500%3E",
+        "https://p0.pipi.cn/friday/040f50c97c7f6962523c1b5c9e45d044.jpg?imageMogr2/thumbnail/2500x2500%3E",
+        "https://p0.pipi.cn/friday/589a64c70109ee2478c55ff3cc85d4e6.jpg?imageMogr2/thumbnail/2500x2500%3E",
+        "https://p0.pipi.cn/friday/2bf36727f64970c52f01607179036909.jpg?imageMogr2/thumbnail/2500x2500%3E",
+        "https://p0.pipi.cn/friday/dc746a701356ec38b06e518c5ccd5f92.jpg?imageMogr2/thumbnail/2500x2500%3E",
+        "https://p0.pipi.cn/friday/320008d05df7293567cca5a277dd8ab8.jpg?imageMogr2/thumbnail/2500x2500%3E",
+        "https://p0.pipi.cn/friday/4e96d3b5336d401b4d2587ed685e73bc.jpg?imageMogr2/thumbnail/2500x2500%3E",
+        "https://p0.pipi.cn/friday/3471306bd0c61c6f6eab563b8a919f40.jpg?imageMogr2/thumbnail/2500x2500%3E",
+        "https://p0.pipi.cn/friday/4093cbd29e8b16b30cc4b93cdab9fd92.jpg?imageMogr2/thumbnail/2500x2500%3E",
+        "https://p0.pipi.cn/friday/b3d082eefbe55017d7d50287cbe3bd92.jpeg?imageMogr2/thumbnail/2500x2500%3E",
+        "https://p0.pipi.cn/friday/942104f1a14a538c87297fd8a40a0890.jpg?imageMogr2/thumbnail/2500x2500%3E",
+        "https://p0.pipi.cn/friday/306fb0d581c9fb1a226d4f5f8d9eef66.jpg?imageMogr2/thumbnail/2500x2500%3E",
+        "https://p0.pipi.cn/friday/4fc9364d662092a5882a571ada391458.jpg?imageMogr2/thumbnail/2500x2500%3E",
+        "https://p0.pipi.cn/friday/a522d78a39bae3805452db8b0e8683b6.jpg?imageMogr2/thumbnail/2500x2500%3E",
+        "https://p0.pipi.cn/friday/52559a08f9ff879416f6f9148523a7fe.jpg?imageMogr2/thumbnail/2500x2500%3E",
+        "https://p0.pipi.cn/friday/04387a9b2e12c95d4bd58b879a2683f2.jpg?imageMogr2/thumbnail/2500x2500%3E",
+        "https://p0.pipi.cn/friday/f6c8ea3657546e1a75dce33437c6d5fd.jpg?imageMogr2/thumbnail/2500x2500%3E",
+        "https://p0.pipi.cn/friday/7857dc99e71110366882a723c374a78b.jpg?imageMogr2/thumbnail/2500x2500%3E",
+        "https://p0.pipi.cn/friday/d4596fe714330e22363a24468ca0de95.jpg?imageMogr2/thumbnail/2500x2500%3E",
+        "https://p0.pipi.cn/friday/564318a9c44ef4b284c5427842692ccb.jpg?imageMogr2/thumbnail/2500x2500%3E"
+      ],
+      "pn": 21,
+      "preScorePersona": false,
+      "proScore": 0.0,
+      "proScoreNum": 0,
+      "pubDate": 1664553600000,
+      "pubDesc": "2022-10-01 08:00中国大陆上映",
+      "rt": "2022-10-01",
+      "sc": 0.0,
+      "scm": "孩子必看！中国航天版大头来啦！",
+      "scoreLabel": "暂无评分",
+      "shareInfo": {
+        "channel": 1,
+        "content": "简介|国庆首选中国航空航天动画大电影！大头儿子与你一起向欢乐宇宙进发！ 拥有航天梦想的大头儿子，通过一次偶然的机会与一位特别的“外星朋友”相识。大头儿子与棉花糖妹妹组队参与小小航天员计划，共同挑战四个关卡的航天任务，他们能否在比赛中获胜？“外星朋友”在关键时刻究竟是如何让落后的大头儿子队伍重拾信心？担任领航员的小头爸爸又将如何鼓励大头儿子与朋友们共同完成艰巨任务？而始终未被公开的“外星朋友”，到底来自何方？",
+        "img": "https://p0.pipi.cn/mmdb/25bfd6dde7a3382ff7c7edc4dd27ce738d432.jpg",
+        "title": "《新大头儿子和小头爸爸5：我的外星朋友》95238人想看，2022-10-01 08:00中国大陆上映",
+        "url": "https://m.maoyan.com/asgard/movie/1475162"
+      },
+      "shortComment": {
+        "content": "孩子必看！中国航天版大头来啦！",
+        "location": 0
+      },
+      "showst": 4,
+      "snum": 826,
+      "src": "中国大陆",
+      "star": "鞠萍,董浩,陈怡",
+      "trailerStyle": 0,
+      "type": 0,
+      "typeDesc": "电影",
+      "vd": "https://vod.pipi.cn/fec9203cvodtransbj1251246104/a56b4ef7387702306332498827/v.f42905.mp4",
+      "ver": "2D",
+      "videoImg": "https://p0.pipi.cn/friday/4e9c52de75705a19eea0f620f7ca1d56.jpg?imageMogr2/thumbnail/2500x2500%3E",
+      "videoName": "“新大头儿子”电影5定档国庆 太空兔邀你开启宇宙奇遇记",
+      "videourl": "https://vod.pipi.cn/fec9203cvodtransbj1251246104/a56b4ef7387702306332498827/v.f42905.mp4",
+      "viewedSt": 0,
+      "vnum": 4,
+      "vodFreeSt": 0,
+      "vodPlay": false,
+      "vodSt": 0,
+      "watched": 734,
+      "wish": 95238,
+      "wishst": 0
+    }
+  }
+}
